@@ -4,10 +4,8 @@ import { Modal } from './Modal';
 
 function App() {
   const [isBlack, setIsBlack] = useState(false);
-<<<<<<< Updated upstream
-=======
   const [isModalOpen, setIsModalOpen] = useState(false);
->>>>>>> Stashed changes
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [homeworks, setHomeworks] = useState(["e.자료구조", "d.수학", "c.확률과통계", "b.선형대수", "a.물리학"])
 
   const sort = () => {
@@ -21,16 +19,13 @@ function App() {
       </div>
        
       <button onClick={() => setIsBlack((prev) => !prev)}>반전시키기</button>
-<<<<<<< Updated upstream
-      {homeworks.map((homework) => <div key={homework}>{homework}</div>)}
+      {homeworks.map((homework, index) => <div key={homework}>{homework}<button onClick={() =>{
+         setIsModalOpen(true)
+         setSelectedIndex(index)
+      }}>open</button></div>)}
       <button onClick={sort}>정렬</button>
 
-=======
-      {homeworks.map((homework) => <div key={homework}>{homework}<button onClick={() => setIsModalOpen((prev) => !prev)}>open</button></div>)}
-      <button onClick={sort}>정렬</button>
-
-      {isModalOpen && <Modal/>}
->>>>>>> Stashed changes
+      {isModalOpen && <Modal title={homeworks[selectedIndex]}/>}
     </div>
   )
 }
